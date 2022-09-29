@@ -1,4 +1,6 @@
 import Experience from '../Experience.js'
+import Cube from './Cube.js'
+import Environment from './Environment.js'
 
 export default class World {
     constructor() {
@@ -9,6 +11,8 @@ export default class World {
         // Wait for resources
         this.resources.on('ready', () => {
             // Setup
+            this.cube = new Cube()
+            this.environment = new Environment()
         })
     }
 

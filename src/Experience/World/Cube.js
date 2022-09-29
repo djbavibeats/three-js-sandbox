@@ -1,31 +1,21 @@
 import * as THREE from 'three'
-import Experience from "../../../../Experience"
+import Experience from '../Experience'
 
-import grassVertexShader from '../shaders/grass/vertex.glsl'
-import grassFragmentShader from '../shaders/grass/fragment.glsl'
-
-export default class Floor {
+export default class Cube {
     constructor() {
         this.experience = new Experience()
         this.scene = this.experience.scene
-        this.resources = this.experience.resources
-
+        
         this.setGeometry()
         this.setMaterial()
         this.setMesh()
     }
-
     setGeometry() {
-        this.geometry = new THREE.PlaneGeometry(3.5, 15)
+        this.geometry = new THREE.BoxGeometry(5, 5)
     }
 
-
     setMaterial() {
-        this.material = new THREE.ShaderMaterial({
-            vertexShader: grassVertexShader,
-            fragmentShader: grassFragmentShader,
-
-        })
+        this.material = new THREE.MeshStandardMaterial({ color: 0xff0000 })
     }
 
     setMesh() {
@@ -33,5 +23,6 @@ export default class Floor {
         this.mesh.rotation.x = - Math.PI * 0.5
         this.mesh.receiveShadow = true
         this.scene.add(this.mesh)
+
     }
 }
